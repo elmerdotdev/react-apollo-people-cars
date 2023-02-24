@@ -1,5 +1,6 @@
 import { Card } from 'antd'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { EditOutlined } from '@ant-design/icons'
 import RemovePerson from '../buttons/RemovePerson'
@@ -50,6 +51,7 @@ const PersonCard = props => {
         <RemovePerson id={id} />
       ]}>
         <Cars cars={cars} />
+        <Link to={`/people/${id}`}>Learn More</Link>
       </Card>
     )}
     </div>

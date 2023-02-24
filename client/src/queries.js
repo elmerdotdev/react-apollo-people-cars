@@ -31,6 +31,11 @@ query PersonWithCars($personId: String!) {
     price
     personId
   }
+  person(id: $personId) {
+    id
+    firstName
+    lastName
+  }
 }`
 
 export const ADD_PERSON = gql`
