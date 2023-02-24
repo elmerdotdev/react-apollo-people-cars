@@ -25,7 +25,7 @@ const People = () => {
         dataSource={data.personWithCars}
         renderItem={(item) => (
           <List.Item>
-            {item.year}, {item.make}, {item.model}, {item.price}
+            {item.year}, {item.make} {item.model}, $ {item.price.toLocaleString()}
           </List.Item>
         )}
       />
