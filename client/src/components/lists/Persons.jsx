@@ -1,9 +1,8 @@
 import { useQuery } from '@apollo/client'
 import { List } from 'antd'
 import React from 'react'
-import { GET_PERSONS } from '../../queries'
+import { GET_PERSONS, GET_CARS } from '../../queries'
 import PersonCard from '../listItems/PersonCard'
-// import ContactCard from '../listItems/ContactCard'
 
 const getStyles = () => ({
   list: {
@@ -15,9 +14,10 @@ const Persons = () => {
   const styles = getStyles()
 
   const {loading, error, data} = useQuery(GET_PERSONS)
+  const {loading: loadingC, error: errorC, data: dataC} = useQuery(GET_CARS)
 
-  if (loading) return 'Loading...'
-  if (error) return `Error! ${error.message}`
+  if (loading || loadingC) return 'Loading...'
+  if (error || errorC) return `Error! ${error.message}`
 
   return (
     <List
@@ -26,7 +26,7 @@ const Persons = () => {
     >
       {data.persons.map(({ id, firstName, lastName }) => (
       <List.Item key={id}>
-        <PersonCard key={id} id={id} firstName={firstName} lastName={lastName} />
+        <PersonCard key={id} id={id} firstName={firstName} lastName={lastName} cars={dataC.cars.filter(car => car.personId === id)} />
       </List.Item>
       ))}
     </List>

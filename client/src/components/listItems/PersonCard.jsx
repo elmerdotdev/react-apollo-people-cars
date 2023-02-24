@@ -3,12 +3,14 @@ import React, { useState } from 'react'
 
 import { EditOutlined } from '@ant-design/icons'
 import RemovePerson from '../buttons/RemovePerson'
-// import UpdateContact from '../forms/UpdateContact'
+import UpdatePerson from '../forms/person/UpdatePerson'
+import Cars from '../lists/Cars'
 
 const PersonCard = props => {
   const [id] = useState(props.id)
   const [firstName, setFirstName] = useState(props.firstName)
   const [lastName, setLastName] = useState(props.lastName)
+  const [cars] = useState(props.cars)
 
   const [editMode, setEditMode] = useState(false)
 
@@ -32,14 +34,13 @@ const PersonCard = props => {
   return (
     <div>
     {editMode ? (
-      <></>
-      // <UpdateContact
-      // id={id}
-      // firstName={firstName}
-      // lastName={lastName}
-      // onButtonClick={handleButtonClick}
-      // updateStateVariable={updateStateVariable}
-      // />
+      <UpdatePerson
+      id={id}
+      firstName={firstName}
+      lastName={lastName}
+      onButtonClick={handleButtonClick}
+      updateStateVariable={updateStateVariable}
+      />
     ) : (
       <Card
       style={{ textAlign: 'left' }}
@@ -48,6 +49,7 @@ const PersonCard = props => {
         <EditOutlined key='edit' onClick={handleButtonClick} />,
         <RemovePerson id={id} />
       ]}>
+        <Cars cars={cars} />
       </Card>
     )}
     </div>

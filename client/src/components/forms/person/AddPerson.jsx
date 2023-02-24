@@ -36,7 +36,6 @@ const AddPerson = () => {
   useEffect(() => {
     forceUpdate([])
   }, [])
-  
 
   return (
     <>
